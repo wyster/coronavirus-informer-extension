@@ -1,4 +1,4 @@
-import findAndReplaceDOMText from 'findAndReplaceDOMText';
+import findAndReplaceDOMText from 'findandreplacedomtext';
 
 let sendTimeout;
 let data = new Proxy(
@@ -18,7 +18,6 @@ let data = new Proxy(
         }
     });
 
-console.log(findAndReplaceDOMText, chrome.runtime);
 findAndReplaceDOMText(document.body, {
     preset: 'prose',
     find: /corona|coronavirus|covid|коронавирус/ui,
