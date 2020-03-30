@@ -24,19 +24,5 @@ browser.tabs.onRemoved.addListener(tabId => {
 });
 
 browser.browserAction.onClicked.addListener(tab => {
-    const createOrRemoveStyleBlock = `{
-let elem = document.querySelector("#coronavirus_style"); 
-if (elem !== null) {
-    elem.remove();
-} else {
-    var css = 'coronavirus { background: red; color: white }',
-    head = document.head || document.getElementsByTagName('head')[0],
-    style = document.createElement('style');
-    style.setAttribute('id', 'coronavirus_style');
-    head.appendChild(style);
-    style.type = 'text/css';
-    style.appendChild(document.createTextNode(css));
-}
-}`;
-    browser.tabs.executeScript({code:  createOrRemoveStyleBlock});
+    browser.tabs.executeScript({file: browser.extension.getURL("dist/toggleHighlighting.js")});
 });
