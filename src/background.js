@@ -1,27 +1,29 @@
+import browser from 'webextension-polyfill';
+
 let data = {};
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'counter') {
         let value = request.value.toString();
         data[sender.tab.id] = value;
-        chrome.browserAction.setBadgeText({text: value, tabId: sender.tab.id});
+        browser.browserAction.setBadgeText({text: value, tabId: sender.tab.id});
     }
 });
 
-chrome.tabs.onActivated.addListener((activeInfo) => {
-    chrome.browserAction.setBadgeText({text: ''});
+browser.tabs.onActivated.addListener((activeInfo) => {
+    browser.browserAction.setBadgeText({text: ''});
     if (activeInfo.tabId in data) {
-        chrome.browserAction.setBadgeText({text: data[activeInfo.tabId], tabId: activeInfo.tabId});
+        browser.browserAction.setBadgeText({text: data[activeInfo.tabId], tabId: activeInfo.tabId});
     } else {
-        chrome.tabs.executeScript({file: "dist/content.js"});
+        browser.tabs.executeScript({file: browser.extension.getURL("dist/content.js")});
     }
 });
 
-chrome.tabs.onRemoved.addListener(tabId => {
+browser.tabs.onRemoved.addListener(tabId => {
     delete data[tabId];
 });
 
-chrome.browserAction.onClicked.addListener(tab => {
+browser.browserAction.onClicked.addListener(tab => {
     const createOrRemoveStyleBlock = `{
 let elem = document.querySelector("#coronavirus_style"); 
 if (elem !== null) {
@@ -36,5 +38,5 @@ if (elem !== null) {
     style.appendChild(document.createTextNode(css));
 }
 }`;
-    chrome.tabs.executeScript({code:  createOrRemoveStyleBlock});
+    browser.tabs.executeScript({code:  createOrRemoveStyleBlock});
 });

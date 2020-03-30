@@ -1,4 +1,7 @@
+import browser from 'webextension-polyfill';
 import findAndReplaceDOMText from 'findandreplacedomtext';
+
+const timeout = 100;
 
 let sendTimeout;
 let data = new Proxy(
@@ -10,8 +13,8 @@ let data = new Proxy(
             if (prop === 'counter') {
                 clearTimeout(sendTimeout);
                 sendTimeout = setTimeout(() => {
-                    chrome.runtime.sendMessage({action: 'counter', value: data.counter});
-                }, 100);
+                    browser.runtime.sendMessage({action: 'counter', value: data.counter});
+                }, timeout);
             }
 
             return Reflect.set(...arguments);

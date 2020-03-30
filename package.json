@@ -1,11 +1,14 @@
 {
   "scripts": {
-    "build": "npx webpack"
+    "build": "npx webpack --mode=production",
+    "build::dev": "npx webpack --mode=development",
+    "build::dev::watch": "npm run build::dev -- --watch"
   },
   "dependencies": {
     "findandreplacedomtext": "^0.4.6"
   },
   "devDependencies": {
+    "webextension-polyfill": "^0.6.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   }
