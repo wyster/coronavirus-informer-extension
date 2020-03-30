@@ -13,10 +13,28 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
     if (activeInfo.tabId in data) {
         chrome.browserAction.setBadgeText({text: data[activeInfo.tabId], tabId: activeInfo.tabId});
     } else {
-        chrome.tabs.executeScript(activeInfo.tabId, {file: "dist/content.js"});
+        chrome.tabs.executeScript({file: "dist/content.js"});
     }
 });
 
 chrome.tabs.onRemoved.addListener(tabId => {
     delete data[tabId];
+});
+
+chrome.browserAction.onClicked.addListener(tab => {
+    const createOrRemoveStyleBlock = `{
+let elem = document.querySelector("#coronavirus_style"); 
+if (elem !== null) {
+    elem.remove();
+} else {
+    var css = 'coronavirus { background: red; color: white }',
+    head = document.head || document.getElementsByTagName('head')[0],
+    style = document.createElement('style');
+    style.setAttribute('id', 'coronavirus_style');
+    head.appendChild(style);
+    style.type = 'text/css';
+    style.appendChild(document.createTextNode(css));
+}
+}`;
+    chrome.tabs.executeScript({code:  createOrRemoveStyleBlock});
 });

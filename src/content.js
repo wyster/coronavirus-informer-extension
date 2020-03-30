@@ -20,8 +20,7 @@ let data = new Proxy(
 
 findAndReplaceDOMText(document.body, {
     preset: 'prose',
-    find: /corona|coronavirus|covid|коронавирус/ui,
-    wrap: 'coronavirus',
+    find: /coronavirus|covid|коронавирус/ui,
     replace(portion, match) {
         data.counter++;
         const node = document.createElement('coronavirus');

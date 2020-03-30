@@ -9,7 +9,7 @@
   "default_locale": "en",
   "permissions": [
     "<all_urls>",
-    "notifications"
+    "activeTab"
   ],
   "content_scripts": [
     {
