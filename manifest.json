@@ -22,13 +22,13 @@
     }
   ],
   "icons": {
-    "64": "dist/icons/64.png",
-    "256": "dist/icons/256.png"
+    "64": "icons/64.png",
+    "256": "icons/256.png"
   },
   "browser_action": {
     "default_icon": {
-      "64": "dist/icons/64.png",
-      "256": "dist/icons/256.png"
+      "64": "icons/64.png",
+      "256": "icons/256.png"
     }
   },
   "web_accessible_resources": [
