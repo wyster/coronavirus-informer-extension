@@ -3,7 +3,7 @@ import toggleHighlighting from 'raw-loader!./toggleHighlighting.js';
 
 let data = {};
 
-browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((request, sender) => {
     if (request.action === 'counter') {
         let value = request.value.toString();
         data[sender.tab.id] = value;

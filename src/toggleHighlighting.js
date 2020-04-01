@@ -1,5 +1,6 @@
 {
-    let elem = document.querySelector("#coronavirus_style");
+    let identity  = 'coronavirus_style';
+    let elem = document.querySelector(`#${identity}`);
     if (elem !== null) {
         elem.remove();
     }
@@ -7,9 +8,9 @@
         const css = 'coronavirus { background: red; color: white }';
         const head = document.head || document.getElementsByTagName('head')[0];
         const style = document.createElement('style');
-        style.setAttribute('id', 'coronavirus_style');
-        head.appendChild(style);
+        style.setAttribute('id', identity);
         style.setAttribute('type', 'text/css');
         style.appendChild(document.createTextNode(css));
+        head.appendChild(style);
     }
 }

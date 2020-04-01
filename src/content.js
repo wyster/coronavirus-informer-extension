@@ -2,6 +2,7 @@ import browser from 'webextension-polyfill';
 import findAndReplaceDOMText from 'findandreplacedomtext';
 
 const timeout = 100;
+const keywordsRegexp = /coronavirus|covid|коронавирус/ui;
 
 let sendTimeout;
 let data = new Proxy(
@@ -23,7 +24,7 @@ let data = new Proxy(
 
 findAndReplaceDOMText(document.body, {
     preset: 'prose',
-    find: /coronavirus|covid|коронавирус/ui,
+    find: keywordsRegexp,
     replace(portion, match) {
         data.counter++;
         const node = document.createElement('coronavirus');
