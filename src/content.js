@@ -32,7 +32,11 @@ let data = new Proxy(
     });
 
 findAndReplaceDOMText(document, {
+    preset: 'prose',
     find: keywordsRegexp,
+    forceContext() {
+        return true;
+    },
     replace(portion, match) {
         data.counter++;
         if (isNotContiguousElement(portion.node)) {
