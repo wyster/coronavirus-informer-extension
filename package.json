@@ -8,6 +8,7 @@
     "findandreplacedomtext": "^0.4.6"
   },
   "devDependencies": {
+    "raw-loader": "^4.0.0",
     "webextension-polyfill": "^0.6.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"

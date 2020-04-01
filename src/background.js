@@ -1,4 +1,5 @@
 import browser from 'webextension-polyfill';
+import toggleHighlighting from 'raw-loader!./toggleHighlighting.js';
 
 let data = {};
 
@@ -23,6 +24,6 @@ browser.tabs.onRemoved.addListener(tabId => {
     delete data[tabId];
 });
 
-browser.browserAction.onClicked.addListener(tab => {
-    browser.tabs.executeScript({file: browser.extension.getURL("dist/toggleHighlighting.js")});
+browser.browserAction.onClicked.addListener(() => {
+    browser.tabs.executeScript({code: toggleHighlighting});
 });
