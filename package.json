@@ -1,4 +1,5 @@
 {
+  "version": "0.0.2",
   "scripts": {
     "build": "npx webpack --mode=production",
     "build::dev": "npx webpack --mode=development",
@@ -9,6 +10,7 @@
   },
   "devDependencies": {
     "raw-loader": "^4.0.0",
+    "standard-version": "^7.1.0",
     "webextension-polyfill": "^0.6.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
