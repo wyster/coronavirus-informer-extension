@@ -1,4 +1,5 @@
 const path = require('path');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
     devtool: false,
@@ -11,4 +12,38 @@ module.exports = {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new FileManagerPlugin({
+            onEnd: {
+                copy: [
+                    {
+                        source: './_locales/**/*',
+                        destination: './dist/extension/_locales'
+                    },
+                    {
+                        source: './dist/**/*',
+                        destination: './dist/extension/dist'
+                    },
+                    {
+                        source: './*.html', destination: './dist/extension'
+                    },
+                    {
+                        source: './icons/**/*',
+                        destination: './dist/extension/icons'
+                    },
+                    {
+                        source: './manifest.json',
+                        destination: './dist/extension'
+                    }
+                ],
+                archive: [
+                    {
+                        source: './dist/extension',
+                        destination: './dist/extension.zip',
+                        format: 'zip'
+                    }
+                ]
+            }
+        })
+    ]
 };

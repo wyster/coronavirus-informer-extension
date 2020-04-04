@@ -9,6 +9,7 @@
     "findandreplacedomtext": "^0.4.6"
   },
   "devDependencies": {
+    "filemanager-webpack-plugin": "^2.0.5",
     "raw-loader": "^4.0.0",
     "standard-version": "^7.1.0",
     "webextension-polyfill": "^0.6.0",
