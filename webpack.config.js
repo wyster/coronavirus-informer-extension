@@ -1,5 +1,6 @@
 const path = require('path');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
     devtool: false,
@@ -13,19 +14,21 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+        new CleanWebpackPlugin({verbose: true}),
         new FileManagerPlugin({
             onEnd: {
                 copy: [
-                    {
-                        source: './_locales/**/*',
-                        destination: './dist/extension/_locales'
-                    },
                     {
                         source: './dist/**/*',
                         destination: './dist/extension/dist'
                     },
                     {
-                        source: './*.html', destination: './dist/extension'
+                        source: './_locales/**/*',
+                        destination: './dist/extension/_locales'
+                    },
+                    {
+                        source: './*.html',
+                        destination: './dist/extension'
                     },
                     {
                         source: './icons/**/*',
