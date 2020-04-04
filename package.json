@@ -1,4 +1,5 @@
 {
+  "version": "0.0.2",
   "scripts": {
     "build": "npx webpack --mode=production",
     "build::dev": "npx webpack --mode=development",
