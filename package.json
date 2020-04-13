@@ -1,5 +1,7 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "author": "Illia Zelenin",
+  "license": "MIT",
   "scripts": {
     "build": "npx webpack --mode=production",
     "build::dev": "npx webpack --mode=development",

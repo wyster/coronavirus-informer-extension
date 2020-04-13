@@ -37,7 +37,11 @@ module.exports = {
                     {
                         source: './manifest.json',
                         destination: './dist/extension'
-                    }
+                    },
+                    {
+                        source: './LICENSE',
+                        destination: './dist/extension/LICENSE.txt'
+                    },
                 ],
                 archive: [
                     {
