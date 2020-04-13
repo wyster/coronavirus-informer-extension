@@ -1,3 +1,5 @@
-**Installation and create dist**
+# Installation and create dist
 
-`nvm use && npm install && npm run build`
+Run: `nvm use && npm install && npm run build`
+
+Output in directory `dist`

@@ -1,6 +1,6 @@
 {
-  "name": "Coronavirus detector",
-  "version": "0.0.2",
+  "name": "Coronavirus informer",
+  "version": "0.0.3",
   "manifest_version": 2,
   "background": {
     "scripts": [
